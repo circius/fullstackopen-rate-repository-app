@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
 
 const Stat = ({ label, value }) => (
   <View style={styles.container}>
+    <Text fontWeight='bold'>{value}</Text>
     <Text>{label}</Text>
-    <Text>{value}</Text>
   </View>
 );
 
