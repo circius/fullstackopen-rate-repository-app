@@ -2,7 +2,9 @@ import React from 'react';
 import { Text } from 'react-native';
 
 const RepositoryItem = ({ item }) => (
-  <Text>{item.id}</Text>
-)
+  Object.keys(item).map(
+    key => <Text key={key}>{key}: {item[key]}</Text>
+  )
+);
 
 export default RepositoryItem;
