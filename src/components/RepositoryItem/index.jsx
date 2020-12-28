@@ -1,20 +1,25 @@
 import React from 'react';
-import Text from '../Text';
+import { View, StyleSheet } from 'react-native';
+
+import Stats from './Stats';
+import Header from './Header';
+
+import theme from '../../theme';
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    backgroundColor: theme.colors.cardBg,
+  }
+});
 
 const RepositoryItem = ({ item }) => {
-  const propertiesMap = {
-    fullName: 'Full name',
-    description: 'Description',
-    language: 'Language',
-    stargazersCount: 'Stars',
-    forksCount: 'Forks',
-    reviewCount: 'Reviews',
-    ratingAverage: 'Rating'
-  };
-  const details = Object.keys(propertiesMap).map(
-    key => <Text key={key}>{propertiesMap[key]}: {item[key]}</Text>
+  return (
+    <View styles={styles.container}>
+      <Header item={item} />
+      <Stats item={item} />
+    </View>
   );
-  return details;
 };
 
 export default RepositoryItem;
