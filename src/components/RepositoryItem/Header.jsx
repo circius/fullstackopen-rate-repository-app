@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
 import Text from '../Text';
+
+import Description from './Description';
 import Badge from './Badge';
 
 const styles = StyleSheet.create({
@@ -10,6 +12,7 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     flexDirection: 'column',
+    flexShrink: 1,
     margin: 5,
   },
   detailsItem: {
@@ -20,7 +23,6 @@ const styles = StyleSheet.create({
     height: 50,
     margin: 5,
   },
-
 });
 
 const Header = ({ item }) => {
@@ -32,7 +34,7 @@ const Header = ({ item }) => {
       />
       <View style={styles.detailsContainer}>
         <Text fontWeight='bold' style={styles.detailsItem}>{item.fullName}</Text>
-        <Text style={styles.detailsItem}>{item.description}</Text>
+        <Description text={item.description} />
         <Badge label={item.language} style={styles.detailsItem} />
       </View>
     </View>
