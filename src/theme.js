@@ -5,6 +5,8 @@ const theme = {
     primary: '#0366d6',
     appBarBg: '#24292e',
     appBarTab: '#e3e3e3',
+    mainBg: '#e1e4e8',
+    cardBg: 'white'
   },
   fontSizes: {
     body: 14,
