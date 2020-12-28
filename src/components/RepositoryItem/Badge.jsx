@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 3,
     alignSelf: 'flex-start',
-    borderRadius: 3,
+    borderRadius: theme.rounding.borderRadius,
     backgroundColor: theme.colors.primary,
   },
   text: {

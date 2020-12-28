@@ -1,18 +1,37 @@
 import React from 'react';
-import { TouchableWithoutFeedback, View } from 'react-native';
+import { TouchableOpacity, View, StyleSheet } from 'react-native';
 import { useField, Formik } from 'formik';
 
 import Text from './Text';
 import FormikTextInput from './TextInput/FormikTextInput';
+import theme from '../theme';
 
 const initialValues = {
   usr: '',
   pw: '',
 };
 
+const styles = StyleSheet.create({
+
+  submit: {
+    height: 40,
+    margin: 10,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: theme.rounding.borderRadius,
+    backgroundColor: theme.colors.primary,
+  },
+  submitText: {
+    color: 'white',
+    fontWeight: theme.fontWeights.bold
+  }
+});
+
 const SignInForm = ({ onSubmit }) => {
   const [usrField, usrMeta, usrHelpers] = useField('usr');
   const [pwField, pwMeta, pwHelpers] = useField('pw');
+
 
   return (
     <View>
@@ -29,18 +48,21 @@ const SignInForm = ({ onSubmit }) => {
         onChangeText={text => pwHelpers.setValue(text)}
         secureTextEntry={true}
       />
-      <TouchableWithoutFeedback onPress={onSubmit}>
-        <Text>Sign in</Text>
-      </TouchableWithoutFeedback>
+      <TouchableOpacity onPress={onSubmit({ usr: usrField.value, pw: pwField.value })} >
+        <View style={styles.submit}>
+          <Text style={styles.submitText}>Sign in</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const SignIn = () => {
   const onSubmit = values => console.log(values);
+
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      <SignInForm />
+    <Formik initialValues={initialValues}>
+      <SignInForm onSubmit={onSubmit} />
     </Formik>
   );
 };

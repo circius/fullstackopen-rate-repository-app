@@ -19,6 +19,9 @@ const theme = {
     normal: '400',
     bold: '700',
   },
+  rounding: {
+    borderRadius: 3
+  }
 };
 
 export default theme;
