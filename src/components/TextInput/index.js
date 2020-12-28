@@ -4,10 +4,10 @@ import theme from '../../theme';
 
 const styles = StyleSheet.create({
   main: {
-    height: 40,
+    height: theme.spacings.formLineHeight,
     borderWidth: StyleSheet.hairlineWidth,
     padding: 5,
-    margin: 10,
+    margin: theme.spacings.formMargin,
     borderRadius: theme.rounding.borderRadius
   },
 });

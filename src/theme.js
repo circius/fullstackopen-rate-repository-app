@@ -8,6 +8,10 @@ const theme = {
     mainBg: '#e1e4e8',
     cardBg: 'white'
   },
+  spacings: {
+    formLineHeight: 40,
+    formMargin: 10
+  },
   fontSizes: {
     body: 14,
     subheading: 16,

@@ -14,8 +14,8 @@ const initialValues = {
 const styles = StyleSheet.create({
 
   submit: {
-    height: 40,
-    margin: 10,
+    height: theme.spacings.formLineHeight,
+    margin: theme.spacings.formMargin,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
