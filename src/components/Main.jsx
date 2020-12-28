@@ -17,7 +17,7 @@ const Main = () => {
 
   const linkPairs = [
     ['repositories', '/'],
-    ['sign in', '/signin']
+    ['sign in', '/signin'],
   ];
   return (
     <View style={styles.container}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 
 import AppBarTab from './AppBarTab';
@@ -27,9 +27,11 @@ const styles = StyleSheet.create({
 const AppBar = ({ linkPairs }) => {
 
   return <View style={styles.container}>
-    {linkPairs.map(
-      pair => <AppBarTab key={pair[1]} label={pair[0]} target={pair[1]} />
-    )}
+    <ScrollView horizontal>
+      {linkPairs.map(
+        pair => <AppBarTab key={pair[1]} label={pair[0]} target={pair[1]} />
+      )}
+    </ScrollView>
   </View>;
 };
 
