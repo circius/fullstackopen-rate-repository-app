@@ -26,7 +26,7 @@ const Stats = ({ item }) => {
   const summaryStats = desiredStats.map(
     pair => [pair[0], summarize(pair[1])]
   );
-  console.log(summaryStats);
+
   return (
     <View style={styles.container}>
       {summaryStats.map(
