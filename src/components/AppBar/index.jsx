@@ -24,9 +24,12 @@ const styles = StyleSheet.create({
   // ...
 });
 
-const AppBar = () => {
+const AppBar = ({ linkPairs }) => {
+
   return <View style={styles.container}>
-    <AppBarTab>repositories</AppBarTab>
+    {linkPairs.map(
+      pair => <AppBarTab key={pair[1]} label={pair[0]} target={pair[1]} />
+    )}
   </View>;
 };
 
