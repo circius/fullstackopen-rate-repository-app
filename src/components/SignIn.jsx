@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
 import { useField, Formik } from 'formik';
+import * as yup from 'yup';
 
 import Text from './Text';
 import FormikTextInput from './TextInput/FormikTextInput';
@@ -10,6 +11,18 @@ const initialValues = {
   usr: '',
   pw: '',
 };
+
+const validationSchema = yup.object().shape({
+  usr: yup
+    .string()
+    .max(99, 'you can fit it in ${max} characters')
+    .required('you must have a username'),
+  pw: yup
+    .string()
+    .min(8, "must be more than ${min} characters")
+    .max(100, 'more than ${max} really not necessary')
+    .required('you must have a password')
+});
 
 const styles = StyleSheet.create({
 
@@ -61,7 +74,10 @@ const SignIn = () => {
   const onSubmit = values => console.log(values);
 
   return (
-    <Formik initialValues={initialValues}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+    >
       <SignInForm onSubmit={onSubmit} />
     </Formik>
   );

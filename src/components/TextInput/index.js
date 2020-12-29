@@ -10,12 +10,23 @@ const styles = StyleSheet.create({
     margin: theme.spacings.formMargin,
     borderRadius: theme.rounding.borderRadius
   },
+  error: {
+    borderColor: 'red'
+  }
 });
 
 const TextInput = ({ style, error, ...props }) => {
-  const textInputStyle = [style, styles.main];
+  const textInputStyle = [
+    style,
+    styles.main,
+    error ? styles.error : undefined
+  ];
 
-  return <NativeTextInput style={textInputStyle} {...props} />;
+  return <NativeTextInput
+    style={textInputStyle}
+    {...props}
+
+  />;
 };
 
 export default TextInput;
