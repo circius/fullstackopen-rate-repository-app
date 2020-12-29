@@ -4,12 +4,13 @@ import { useField } from 'formik';
 
 import TextInput from './';
 import Text from '../Text';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   errorText: {
     marginTop: 5,
     marginLeft: 20,
-    color: 'red'
+    color: theme.colors.errors
   },
 });
 

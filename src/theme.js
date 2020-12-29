@@ -6,7 +6,9 @@ const theme = {
     appBarBg: '#24292e',
     appBarTab: '#e3e3e3',
     mainBg: '#e1e4e8',
-    cardBg: 'white'
+    cardBg: 'white',
+    buttonText: 'white',
+    errors: "#d73a4a"
   },
   spacings: {
     formLineHeight: 40,

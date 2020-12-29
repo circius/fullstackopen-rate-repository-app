@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.rounding.borderRadius
   },
   error: {
-    borderColor: 'red'
+    borderColor: theme.colors.errors
   }
 });
 

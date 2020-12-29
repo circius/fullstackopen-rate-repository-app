@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
   },
   submitText: {
-    color: 'white',
+    color: theme.colors.buttonText,
     fontWeight: theme.fontWeights.bold
   }
 });
