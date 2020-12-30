@@ -6,18 +6,15 @@ import { ALL_REPOSITORIES } from '../graphql/queries';
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
 
-  const { loading, _error, data } = useQuery(ALL_REPOSITORIES, { fetchPolicy: 'cache-and-network' });
-
-  const queryRepositories = async () => {
-    const { repositories } = await data;
-    setRepositories(repositories);
-  };
+  const { loading, error, data, refetch } = useQuery(ALL_REPOSITORIES, { fetchPolicy: 'cache-and-network' });
 
   useEffect(() => {
-    queryRepositories();
-  }, []);
+    if (!loading) {
+      setRepositories(data.repositories);
+    }
+  }, [loading]);
 
-  return { repositories, loading, refetch: queryRepositories };
+  return { repositories, loading, refetch };
 };
 
 export default useRepositories;
