@@ -1,7 +1,9 @@
 import ApolloClient from 'apollo-boost';
-import config from '../constants.js';
+import Constants from 'expo-constants';
 
-const ENDPOINT = `${config.baseUrl}/graphql`
+
+
+const ENDPOINT = `${Constants.manifest.extra.apollo_uri}/graphql`;
 
 const createApolloClient = () => {
   return new ApolloClient({
