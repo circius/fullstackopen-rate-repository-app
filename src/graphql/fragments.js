@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
-export const repositoryForCard = gql`
-  {
+export const RepositoryDetails = gql`
+  fragment RepositoryDetails on Repository {
     id,
     fullName,
     reviewCount,

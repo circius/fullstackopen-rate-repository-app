@@ -1,15 +1,16 @@
 import { gql } from 'apollo-boost';
-import { repositoryForCard } from './fragments';
+
+import { RepositoryDetails } from './fragments';
 
 export const ALL_REPOSITORIES = gql`
   query {
-    repositories{
+    repositories {
       edges {
         node {
-          ...repositoryForCard
+          ...RepositoryDetails
         }
       }
     }
   }
-  ${repositoryForCard}
+  ${RepositoryDetails}
 `;
