@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import constants from '../constants.js';
 
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
   const [loading, setLoading] = useState(false);
-  const ENDPOINT = 'http://172.20.10.2:5000/api/repositories'
+  const ENDPOINT = `${constants.baseUrl}/api/repositories`;
 
   const fetchRepositories = async () => {
     setLoading(true);
