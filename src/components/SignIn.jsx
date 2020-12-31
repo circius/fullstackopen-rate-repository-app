@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
 import { useField, Formik } from 'formik';
 import * as yup from 'yup';
@@ -6,6 +6,28 @@ import * as yup from 'yup';
 import Text from './Text';
 import FormikTextInput from './TextInput/FormikTextInput';
 import theme from '../theme';
+import useSignIn from '../hooks/useSignIn';
+
+const SignIn = () => {
+  const [signIn, result] = useSignIn();
+  const onSubmit = ({ usr, pw }) => signIn(usr, pw);
+
+  useEffect(() => {
+    if (result.loading) {
+      const token = result.data.authorize.accessToken;
+
+    }
+  }, [result.loading]);
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+    >
+      <SignInForm onSubmit={onSubmit} />
+    </Formik>
+  );
+};
 
 const initialValues = {
   usr: '',
@@ -22,23 +44,6 @@ const validationSchema = yup.object().shape({
     .min(8, "must be more than ${min} characters")
     .max(100, 'more than ${max} really not necessary')
     .required('you must have a password')
-});
-
-const styles = StyleSheet.create({
-
-  submit: {
-    height: theme.spacings.formLineHeight,
-    margin: theme.spacings.formMargin,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: theme.rounding.borderRadius,
-    backgroundColor: theme.colors.primary,
-  },
-  submitText: {
-    color: theme.colors.buttonText,
-    fontWeight: theme.fontWeights.bold
-  }
 });
 
 const SignInForm = ({ onSubmit }) => {
@@ -61,7 +66,7 @@ const SignInForm = ({ onSubmit }) => {
         onChangeText={text => pwHelpers.setValue(text)}
         secureTextEntry={true}
       />
-      <TouchableOpacity onPress={onSubmit({ usr: usrField.value, pw: pwField.value })} >
+      <TouchableOpacity onPress={() => onSubmit({ usr: usrField.value, pw: pwField.value })} >
         <View style={styles.submit}>
           <Text style={styles.submitText}>Sign in</Text>
         </View>
@@ -70,17 +75,23 @@ const SignInForm = ({ onSubmit }) => {
   );
 };
 
-const SignIn = () => {
-  const onSubmit = values => console.log(values);
+const styles = StyleSheet.create({
 
-  return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-    >
-      <SignInForm onSubmit={onSubmit} />
-    </Formik>
-  );
-};
+  submit: {
+    height: theme.spacings.formLineHeight,
+    margin: theme.spacings.formMargin,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: theme.rounding.borderRadius,
+    backgroundColor: theme.colors.primary,
+  },
+  submitText: {
+    color: theme.colors.buttonText,
+    fontWeight: theme.fontWeights.bold
+  }
+});
+
+
 
 export default SignIn;
