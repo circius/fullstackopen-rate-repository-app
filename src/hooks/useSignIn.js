@@ -7,12 +7,8 @@ const useSignIn = () => {
     { options: { IgnoreResults: false } });
   // console.log('result in signIn hook:', result);
 
-  const signIn = async (usr, pw) => {
-    mutate({ variables: { username: usr, password: pw } }).then(
-      whatever => console.log('whatever:', whatever)
-    );
-    console.log('result in hook:', result.data);
-
+  const signIn = (usr, pw) => {
+    mutate({ variables: { username: usr, password: pw } });
   };
 
   return [signIn, result];
