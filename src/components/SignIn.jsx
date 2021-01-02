@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
 import { useField, Formik } from 'formik';
 import * as yup from 'yup';
+
 
 import Text from './Text';
 import FormikTextInput from './TextInput/FormikTextInput';
@@ -9,15 +10,8 @@ import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
 
 const SignIn = () => {
-  const [signIn, result] = useSignIn();
+  const [signIn] = useSignIn();
   const onSubmit = ({ usr, pw }) => signIn(usr, pw);
-
-  useEffect(() => {
-    if (result.loading) {
-      const token = result.data.authorize.accessToken;
-
-    }
-  }, [result.loading]);
 
   return (
     <Formik
