@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 
 import AppBarTab from './AppBarTab';
+import LoginBarTab from './LoginBarTab';
 
 import theme from '../../theme';
 
@@ -20,8 +21,6 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
     padding: 10,
   }
-
-  // ...
 });
 
 const AppBar = ({ linkPairs }) => {
@@ -31,6 +30,7 @@ const AppBar = ({ linkPairs }) => {
       {linkPairs.map(
         pair => <AppBarTab key={pair[1]} label={pair[0]} target={pair[1]} />
       )}
+      <LoginBarTab />
     </ScrollView>
   </View>;
 };

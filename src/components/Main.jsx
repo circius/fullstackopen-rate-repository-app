@@ -16,8 +16,7 @@ const styles = StyleSheet.create({
 const Main = () => {
 
   const linkPairs = [
-    ['repositories', '/'],
-    ['sign in', '/signin'],
+    ['repositories', '/']
   ];
   return (
     <View style={styles.container}>
