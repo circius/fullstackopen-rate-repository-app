@@ -14,3 +14,11 @@ export const ALL_REPOSITORIES = gql`
   }
   ${RepositoryDetails}
 `;
+
+export const AUTHORIZED_USER = gql`
+query {
+    authorizedUser {
+      username
+  }
+}
+`;
