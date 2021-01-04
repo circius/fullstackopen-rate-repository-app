@@ -13,8 +13,6 @@ const styles = StyleSheet.create({
 });
 
 const AppBarTab = (props) => {
-  console.log('props in AppBarTab:', props);
-
   return (
     <Link to={props.target}>
       <Text
