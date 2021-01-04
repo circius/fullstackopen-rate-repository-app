@@ -8,14 +8,14 @@ import { TouchableWithoutFeedback } from 'react-native';
 
 const LoginBarTab = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const { loading, error, data } = useQuery(AUTHORIZED_USER);
+  const { loading, error, data } = useQuery(AUTHORIZED_USER, { fetchPolicy: "cache-and-network" });
   const [doSignOut] = useSignOut();
 
   useEffect(() => {
     if (!loading) {
       setLoggedIn(data.authorizedUser !== null);
     }
-  }, [loading]);
+  }, [data]);
 
   const signIn = {
     label: 'sign in',
@@ -26,8 +26,7 @@ const LoginBarTab = () => {
     target: '#'
   };
   console.log('loading:', loading);
-  console.log('data:', data);
-
+  console.log('data.authorizedUser:', data);
   console.log('loggedIn:', loggedIn);
 
 
