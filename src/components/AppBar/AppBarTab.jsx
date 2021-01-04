@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Link } from 'react-router-native';
 
 import theme from '../../theme';
@@ -12,10 +12,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const AppBarTab = ({ label, target }) => (
-  <Link to={target}>
-    <Text style={styles.tab} >{label}</Text>
-  </Link>
-);
+const AppBarTab = (props) => {
+  console.log('props in AppBarTab:', props);
+
+  return (
+    <Link to={props.target}>
+      <Text
+        style={styles.tab}
+        {...props} // for compatibility with Touchable providers
+      >
+        {props.label}
+      </Text>
+    </Link>
+  );
+};
 
 export default AppBarTab;
