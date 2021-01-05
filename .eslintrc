@@ -1,6 +1,7 @@
 {
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ],
     "settings": {
         "react": {
@@ -13,7 +14,8 @@
     ],
     "parser": "babel-eslint",
     "env": {
-        "browser": true
+        "browser": true,
+        "jest/globals": true
     },
     "rules": {
         "react/prop-types": "off",
