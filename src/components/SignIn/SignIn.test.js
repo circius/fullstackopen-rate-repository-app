@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { render, fireEvent } from '@testing-library/react-native';
 
-import SignInForm from '../../components/SignIn/SignInForm';
+import SignInForm from './SignInForm';
 
 
 describe('the sign in form', () => {
