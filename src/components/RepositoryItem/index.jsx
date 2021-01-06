@@ -13,9 +13,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = (props) => {
+  const { item } = props;
+
   return (
-    <View styles={styles.container}>
+    <View styles={styles.container} testID="RepositoryItem">
       <Header item={item} />
       <Stats item={item} />
     </View>
