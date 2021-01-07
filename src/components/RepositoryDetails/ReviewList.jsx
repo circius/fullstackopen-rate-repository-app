@@ -10,6 +10,9 @@ const ReviewList = ({ id }) => {
 
   if (!reviews) return <Text>loading...</Text>;
 
+  console.log('reviews:', reviews);
+
+
   const { edges } = reviews;
 
   const nodes = edges
