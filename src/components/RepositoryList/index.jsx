@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 
 import RepositoryListContainer from './RepositoryListContainer';
 
@@ -8,7 +9,9 @@ const RepositoryList = () => {
   const { repositories } = useRepositories();
 
   return (
-    <RepositoryListContainer repositories={repositories} />
+    repositories
+      ? <RepositoryListContainer repositories={repositories} />
+      : <Text>loading...</Text>
   );
 };
 
