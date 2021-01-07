@@ -69,8 +69,15 @@ describe('RepositoryList', () => {
 
       testData.forEach(edge => edgeRenderedP(edge));
 
+      const statsRenderedP = (expected) => {
+        expected.forEach(stat => {
+          const el = getByText(stat);
+          expect(el).not.toBeUndefined();
+        });
+      };
 
-
+      statsRenderedP(["1.6K", "21.9K", "88", "3"]); // <- checking, loosely, formik
+      statsRenderedP(["69", "1.8K", "72"]); // <- checking, loosely, reactAsync
     });
   });
 });
