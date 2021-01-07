@@ -25,11 +25,6 @@ const LoginBarTab = () => {
     label: 'sign out',
     target: '#'
   };
-  console.log('loading:', loading);
-  console.log('data.authorizedUser:', data);
-  console.log('loggedIn:', loggedIn);
-
-
   return (
     !loggedIn
       ? <AppBarTab {...signIn} />
