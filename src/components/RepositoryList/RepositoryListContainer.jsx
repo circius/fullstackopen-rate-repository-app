@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import RepositoryItem from '../RepositoryItem';
 import ItemSeparator from './ItemSeparator';
+import RepositoryListItem from './RepositoryListItem';
 
 const RepositoryListContainer = ({ repositories }) => {
 
@@ -15,7 +15,9 @@ const RepositoryListContainer = ({ repositories }) => {
   return <FlatList
     data={nodes}
     ItemSeparatorComponent={ItemSeparator}
-    renderItem={({ item }) => <RepositoryItem item={item} />}
+    renderItem={({ item }) => (
+      <RepositoryListItem item={item} />
+    )}
   // other props
   />;
 };
