@@ -18,7 +18,7 @@ const RepositoryItem = (props) => {
   const { item } = props;
 
   return (
-    <View styles={styles.container} testID="RepositoryItem">
+    <View style={styles.container} testID="RepositoryItem">
       <Header item={item} />
       <Stats item={item} />
       {item.url && <GithubButton url={item.url} />}
