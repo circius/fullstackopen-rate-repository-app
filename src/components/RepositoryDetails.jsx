@@ -8,11 +8,12 @@ import RepositoryItem from './RepositoryItem';
 const RepositoryDetails = () => {
   const { id } = useParams();
   const { repository } = useRepository(id);
-  console.log('repository:', repository);
 
-  return repository
-    ? <RepositoryItem item={repository} />
-    : <Text> loading ...</Text>;
+  return (
+    repository
+      ? <RepositoryItem item={repository} />
+      : <Text> loading ...</Text>
+  );
 };
 
 export default RepositoryDetails;
