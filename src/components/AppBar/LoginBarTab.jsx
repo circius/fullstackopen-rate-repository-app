@@ -8,6 +8,7 @@ import { TouchableWithoutFeedback } from 'react-native';
 
 const LoginBarTab = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const { loading, error, data } = useQuery(AUTHORIZED_USER, { fetchPolicy: "cache-and-network" });
   const [doSignOut] = useSignOut();
 
