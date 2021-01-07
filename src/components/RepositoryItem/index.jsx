@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import GithubButton from './GithubButton';
 import Stats from './Stats';
 import Header from './Header';
 
@@ -20,6 +21,7 @@ const RepositoryItem = (props) => {
     <View styles={styles.container} testID="RepositoryItem">
       <Header item={item} />
       <Stats item={item} />
+      {item.url && <GithubButton url={item.url} />}
     </View>
   );
 };
