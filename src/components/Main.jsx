@@ -28,12 +28,13 @@ const Main = () => {
         <Route path="/" exact>
           <RepositoryList />
         </Route>
-        <Route path="/:id">
-          <RepositoryDetails />
-        </Route>
         <Route path="/signin" exact>
           <SignIn />
         </Route>
+        <Route path="/:id">
+          <RepositoryDetails />
+        </Route>
+
         <Redirect to="/" />
       </Switch>
 
