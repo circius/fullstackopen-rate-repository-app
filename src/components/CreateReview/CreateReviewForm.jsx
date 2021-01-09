@@ -5,7 +5,7 @@ import { useField } from 'formik';
 import FormikTextInput from '../TextInput/FormikTextInput';
 import SubmitButton from '../SubmitButton';
 
-const CreateReviewForm = () => {
+const CreateReviewForm = ({ onSubmit }) => {
   const [repoOwnerField, repoOwnerMeta, repoOwnerHelpers] = useField('repoOwner');
   const [repoNameField, repoNameMeta, repoNameHelpers] = useField('repoName');
   const [ratingField, ratingMeta, ratingHelpers] = useField('rating');
@@ -37,7 +37,12 @@ const CreateReviewForm = () => {
         value={reviewField.value}
         onChangeText={text => reviewHelpers.setValue(text)}
       />
-      <SubmitButton label='create' />
+      <SubmitButton label='create' onPress={() => onSubmit({
+        repoOwner: repoOwnerField,
+        repoName: repoNameField,
+        rating: ratingField,
+        review: reviewField,
+      })} />
     </View>
   );
 };

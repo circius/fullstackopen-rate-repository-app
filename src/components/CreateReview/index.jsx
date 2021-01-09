@@ -5,10 +5,13 @@ import * as yup from 'yup';
 import CreateReviewForm from './CreateReviewForm';
 
 const CreateReview = () => {
+
+  const onSubmit = (vals) => alert(`got ${Object.keys(vals).length} vals`);
+
   return <Formik
     initialValues={initialValues}
   >
-    <CreateReviewForm />
+    <CreateReviewForm onSubmit={onSubmit} />
   </Formik>;
 };
 
