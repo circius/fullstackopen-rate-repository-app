@@ -10,7 +10,7 @@ const useAuthorizedUser = () => {
 
   useEffect(() => {
     if (!loading) {
-      setAuthorizedUser(data.authorizedUser !== null);
+      setAuthorizedUser(data.authorizedUser);
     }
   }, [data]);
 
