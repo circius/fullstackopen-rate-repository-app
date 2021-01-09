@@ -38,10 +38,10 @@ const CreateReviewForm = ({ onSubmit }) => {
         onChangeText={text => reviewHelpers.setValue(text)}
       />
       <SubmitButton label='create' onPress={() => onSubmit({
-        repoOwner: repoOwnerField,
-        repoName: repoNameField,
-        rating: ratingField,
-        review: reviewField,
+        repoOwner: repoOwnerField.value,
+        repoName: repoNameField.value,
+        rating: ratingField.value,
+        review: reviewField.value,
       })} />
     </View>
   );

@@ -3,10 +3,12 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import CreateReviewForm from './CreateReviewForm';
+import useCreateReview from '../../hooks/useCreateReview';
 
 const CreateReview = () => {
+  const [createReview, result] = useCreateReview();
 
-  const onSubmit = (vals) => alert(`got ${Object.keys(vals).length} vals`);
+  const onSubmit = (vals) => createReview(vals);
 
   return <Formik
     initialValues={initialValues}
