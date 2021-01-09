@@ -1,12 +1,10 @@
 import React from 'react';
 
-import useAuthorizedUser from '../../hooks/useAuthorizedUser';
 import useSignOut from '../../hooks/useSignOut';
 import AppBarTab from './AppBarTab';
 import { TouchableWithoutFeedback } from 'react-native';
 
-const LoginBarTab = () => {
-  const authorizedUser = useAuthorizedUser();
+const LoginBarTab = ({ authorizedUser }) => {
   const [doSignOut] = useSignOut();
 
 
