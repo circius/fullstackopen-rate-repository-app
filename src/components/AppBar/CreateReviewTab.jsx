@@ -6,8 +6,10 @@ const CreateReviewTab = () => {
     label: 'create review',
     target: '/create'
   };
+
+
   return (
-    <AppBarTab props={props} />
+    <AppBarTab {...props} />
   );
 };
 
