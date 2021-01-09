@@ -7,24 +7,32 @@ const AverageRating = (props) => {
 
   const styles = StyleSheet.create({
     container: {
-      borderWidth: 3,
+      flex: 1,
+    },
+    circle: {
+      borderWidth: 2,
       borderRadius: 100,
       width: 50,
       height: 50,
       borderColor: theme.colors.primary,
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      margin: theme.dimensions.reviewMargin,
+
     },
     text: {
       color: theme.colors.primary,
-      fontSize: 18
+      fontSize: 18,
     },
   });
   return (
-    <View style={styles.container} {...props}>
-      <Text style={styles.text}>{rating}</Text>
+    <View style={styles.container}>
+      <View style={styles.circle}>
+        <Text style={styles.text}>{rating}</Text>
+      </View>
     </View>
+
   );
 };
 

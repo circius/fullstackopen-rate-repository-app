@@ -21,7 +21,8 @@ const theme = {
     subheading: 16,
   },
   dimensions: {
-    separatorHeight: 10
+    separatorHeight: 10,
+    reviewMargin: 10,
   },
   fonts: {
 
