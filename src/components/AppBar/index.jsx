@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 import useAuthorizedUser from '../../hooks/useAuthorizedUser';
 import AppBarTab from './AppBarTab';
 import LoginBarTab from './LoginBarTab';
+import CreateReviewTab from './CreateReviewTab';
 
 import theme from '../../theme';
 
@@ -17,6 +18,7 @@ const AppBar = ({ linkPairs }) => {
       {linkPairs.map(
         pair => <AppBarTab key={pair[1]} label={pair[0]} target={pair[1]} />
       )}
+      {authorizedUser && <CreateReviewTab />}
       <LoginBarTab authorizedUser={authorizedUser} />
     </ScrollView>
   </View>;
