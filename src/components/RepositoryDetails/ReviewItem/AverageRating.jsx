@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import theme from '../../../theme';
 
-const AverageRating = ({ rating }) => {
+const AverageRating = (props) => {
+  const rating = props.rating;
+
   const styles = StyleSheet.create({
     container: {
       borderWidth: 3,
@@ -20,7 +22,7 @@ const AverageRating = ({ rating }) => {
     },
   });
   return (
-    <View style={styles.container}>
+    <View style={styles.container} {...props}>
       <Text style={styles.text}>{rating}</Text>
     </View>
   );

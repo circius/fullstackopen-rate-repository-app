@@ -1,8 +1,20 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 const ReviewDetails = ({ item }) => {
-  return <Text>details</Text>;
+  const styles = StyleSheet.create({
+    container: {},
+    username: {
+      fontWeight: 'bold'
+    }
+  });
+  return (
+    <View style={styles.container}>
+      <Text style={styles.username}>{item.user.username}</Text>
+      <Text>{item.createdAt}</Text>
+      <Text>{item.text}</Text>
+    </View>
+  );
 };
 
 export default ReviewDetails;
