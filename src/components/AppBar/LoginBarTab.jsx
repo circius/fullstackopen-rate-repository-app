@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client';
+import React from 'react';
 
-import { AUTHORIZED_USER } from '../../graphql/queries';
+import useAuthorizedUser from '../../hooks/useAuthorizedUser';
 import useSignOut from '../../hooks/useSignOut';
 import AppBarTab from './AppBarTab';
 import { TouchableWithoutFeedback } from 'react-native';
 
 const LoginBarTab = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const { loading, error, data } = useQuery(AUTHORIZED_USER, { fetchPolicy: "cache-and-network" });
+  const authorizedUser = useAuthorizedUser();
   const [doSignOut] = useSignOut();
 
-  useEffect(() => {
-    if (!loading) {
-      setLoggedIn(data.authorizedUser !== null);
-    }
-  }, [data]);
 
   const signIn = {
     label: 'sign in',
@@ -27,7 +19,7 @@ const LoginBarTab = () => {
     target: '#'
   };
   return (
-    !loggedIn
+    !authorizedUser
       ? <AppBarTab {...signIn} />
       : <TouchableWithoutFeedback onPress={() => doSignOut()}>
         <AppBarTab {...signOut} />
