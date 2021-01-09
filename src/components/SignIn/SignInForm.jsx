@@ -1,12 +1,10 @@
 import React from 'react';
-import { TouchableOpacity, View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { useField } from 'formik';
 
 
-import Text from '../Text';
 import SubmitButton from '../SubmitButton';
 import FormikTextInput from '../TextInput/FormikTextInput';
-import theme from '../../theme';
 
 const SignInForm = ({ onSubmit }) => {
   const [usrField, usrMeta, usrHelpers] = useField('usr');
@@ -30,7 +28,7 @@ const SignInForm = ({ onSubmit }) => {
         testID="passwordField"
       />
 
-      <SubmitButton label={'sign in'} onPress={{ usr: usrField.value, pw: pwField.value }} testID="submitButton" />
+      <SubmitButton label={'sign in'} onPress={() => onSubmit({ usr: usrField.value, pw: pwField.value })} testID="submitButton" />
 
     </View>
   );
