@@ -10,6 +10,7 @@ const CreateReview = () => {
 
   return <Formik
     initialValues={initialValues}
+    validationSchema={validationSchema}
   >
     <CreateReviewForm onSubmit={onSubmit} />
   </Formik>;
@@ -21,5 +22,19 @@ const initialValues = {
   rating: "",
   review: ""
 };
+
+const validationSchema = yup.object().shape({
+  repoName: yup
+    .string()
+    .required('need to know which repo to review'),
+  repoOwner: yup
+    .string()
+    .required('need to know who owns the repo'),
+  rating: yup
+    .number()
+    .required("a review must have a rating"),
+  review: yup
+    .string()
+});
 
 export default CreateReview;
