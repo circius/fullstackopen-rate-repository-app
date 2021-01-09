@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { format } from 'date-fns';
+
 import theme from '../../../theme';
 
 const ReviewDetails = ({ item }) => {
@@ -19,10 +21,13 @@ const ReviewDetails = ({ item }) => {
       flex: 1,
     },
   });
+
+  const fdate = format(Date.parse(item.createdAt), "dd.MM.yy");
+
   return (
     <View style={styles.container}>
       <Text style={styles.username}>{item.user.username}</Text>
-      <Text style={styles.createdAt}>{item.createdAt}</Text>
+      <Text style={styles.createdAt}>{fdate}</Text>
       <Text style={styles.text}>{item.text}</Text>
     </View>
   );
