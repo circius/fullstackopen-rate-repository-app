@@ -20,6 +20,9 @@ const theme = {
     body: 14,
     subheading: 16,
   },
+  dimensions: {
+    separatorHeight: 10
+  },
   fonts: {
 
     main: Platform.select({
