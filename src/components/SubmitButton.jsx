@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import theme from '../theme';
 
-const SubmitButton = () => (
-  <View style={styles.submit}>
-    <Text style={styles.submitText}>Sign in</Text>
-  </View>
+const SubmitButton = (props) => (
+  <TouchableOpacity onPress={props.onPress} {...props}>
+    <View style={styles.submit}>
+      <Text style={styles.submitText}>{props.label}</Text>
+    </View>
+  </TouchableOpacity>
+
 );
 
 

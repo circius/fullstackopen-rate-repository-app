@@ -29,13 +29,9 @@ const SignInForm = ({ onSubmit }) => {
         secureTextEntry={true}
         testID="passwordField"
       />
-      <TouchableOpacity
-        onPress={() => onSubmit({ usr: usrField.value, pw: pwField.value })}
-        testID="submitButton"
-      >
-        <SubmitButton />
 
-      </TouchableOpacity>
+      <SubmitButton label={'sign in'} onPress={{ usr: usrField.value, pw: pwField.value }} testID="submitButton" />
+
     </View>
   );
 };
