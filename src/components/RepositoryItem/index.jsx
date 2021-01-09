@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     backgroundColor: theme.colors.cardBg,
+    padding: 5
   }
 });
 
