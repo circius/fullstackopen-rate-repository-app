@@ -6,7 +6,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const styles = StyleSheet.create({
   separator: {
-    height: 10,
+    height: theme.dimensions.separatorHeight,
     backgroundColor: theme.colors.mainBg,
   },
 });
