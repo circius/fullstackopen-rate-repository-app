@@ -28,7 +28,7 @@ const initialValues = {
 const validationSchema = yup.object().shape({
   repoName: yup
     .string()
-    .matches(/[\w\d-]/, 'invalid repo name: only numbers, digits and `-`!')
+    .matches(/^[\w\d-]+$/, 'invalid repo name: only numbers, digits and `-`!')
     .required('need to know which repo to review'),
   repoOwner: yup
     .string()
