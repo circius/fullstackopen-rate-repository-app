@@ -6,7 +6,7 @@ import CreateReviewForm from './CreateReviewForm';
 import useCreateReview from '../../hooks/useCreateReview';
 
 const CreateReview = () => {
-  const [createReview, result] = useCreateReview();
+  const [createReview] = useCreateReview();
 
   const onSubmit = (vals) => createReview(vals);
 
