@@ -3,9 +3,13 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import SignUpForm from './SignUpForm';
+import useSignUp from '../../hooks/useSignUp';
 
 const SignUp = () => {
-  const onSubmit = (vals) => console.log(vals);
+  const [signUp] = useSignUp();
+
+  const onSubmit = (vals) => signUp(vals);
+
 
   return (
     <Formik

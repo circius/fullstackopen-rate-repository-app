@@ -5,7 +5,7 @@ import { useField } from 'formik';
 import FormikTextInput from '../TextInput/FormikTextInput';
 import SubmitButton from '../SubmitButton';
 
-const SignUpForm = () => {
+const SignUpForm = ({ onSubmit }) => {
   const [usernameField, usernameMeta, usernameHelpers] = useField('username');
   const [passwordField, passwordMeta, passwordHelpers] = useField('password');
   const [passwordConfirmField, passwordConfirmMeta, passwordConfirmHelpers] = useField('passwordConfirm');
@@ -30,7 +30,7 @@ const SignUpForm = () => {
         value={passwordConfirmField.value}
         onChangeText={text => passwordConfirmHelpers.setValue(text)}
       />
-      <SubmitButton label='sign up' onPress={() => onsubmit({
+      <SubmitButton label='sign up' onPress={() => onSubmit({
         username: usernameField.value,
         password: passwordField.value
       })}
