@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import RepositoryListContainer from './RepositoryListContainer';
+import RepositorySortingSelector from '../RepositorySortingSelector';
 
 import useRepositories from '../../hooks/useRepositories';
 
@@ -9,9 +10,12 @@ const RepositoryList = () => {
   const { repositories } = useRepositories();
 
   return (
-    repositories
-      ? <RepositoryListContainer repositories={repositories} />
-      : <Text>loading...</Text>
+    <View>
+      <RepositorySortingSelector />
+      {repositories
+        ? <RepositoryListContainer repositories={repositories} />
+        : <Text>loading...</Text>}
+    </View>
   );
 };
 
