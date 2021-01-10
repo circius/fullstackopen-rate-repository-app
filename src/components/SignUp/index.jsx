@@ -36,8 +36,9 @@ const validationSchema = yup.object().shape({
     .min(5, 'must be at least 5 characters')
     .max(50, 'more than 50 characters is a bit much, make do with less')
     .required('of course you need a password'),
-  confirmPassword: yup
+  passwordConfirm: yup
     .string()
+    .oneOf([yup.ref('password'), null], "passwords don't match")
     .required('please confirm your password')
 });
 
