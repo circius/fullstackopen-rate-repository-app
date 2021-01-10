@@ -2,18 +2,20 @@ import { useHistory } from 'react-router-dom';
 import { useMutation } from "@apollo/react-hooks";
 
 import { SIGN_UP } from '../graphql/mutations';
+import useSignIn from './useSignIn';
 
 const useSignUp = () => {
   const [mutate, result] = useMutation(SIGN_UP);
   const history = useHistory();
+  const [signIn] = useSignIn();
 
   const signUp = async ({ password, username }) => {
-    const response = await mutate({
+    await mutate({
       variables: {
         password, username
       }
     });
-    console.log('response:', response);
+    await signIn(username, password);
     history.push('/');
   };
   return [signUp, result];
