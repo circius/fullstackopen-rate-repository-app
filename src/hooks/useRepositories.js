@@ -9,10 +9,10 @@ const useRepositories = () => {
   const { loading, error, data, refetch } = useQuery(ALL_REPOSITORIES, { fetchPolicy: 'cache-and-network' });
 
   useEffect(() => {
-    if (!loading) {
+    if (data) {
       setRepositories(data.repositories);
     }
-  }, [loading]);
+  }, [data]);
 
   return { repositories, loading, refetch };
 };
