@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+import { DefaultTheme } from 'react-native-paper';
 
 const theme = {
   colors: {
@@ -25,7 +26,6 @@ const theme = {
     reviewMargin: 10,
   },
   fonts: {
-
     main: Platform.select({
       ios: 'Arial',
       android: 'Roboto',
@@ -38,6 +38,16 @@ const theme = {
   },
   rounding: {
     borderRadius: 3
+  }
+};
+
+export const PaperTheme = {
+  ...DefaultTheme,
+  roundness: theme.rounding.borderRadius,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: theme.colors.primary,
+    text: 'black',
   }
 };
 
