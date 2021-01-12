@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 
 import { Menu, Button } from 'react-native-paper';
 
-const RepositorySortingSelector = () => {
+const RepositorySortingSelector = ({ order, setOrder }) => {
   const [visible, setVisible] = useState(false);
-  const [order, setOrder] = useState("latest");
 
   const onPress = (status) => {
-    setOrder(status);
     setVisible(false);
+    setOrder(status);
   };
 
   const orders = {
@@ -30,6 +29,7 @@ const RepositorySortingSelector = () => {
   };
 
   const items = Object.keys(orders);
+
   return (
     <Menu
       visible={visible}
@@ -42,8 +42,9 @@ const RepositorySortingSelector = () => {
       }
     >
       {
-        items.map(item =>
-          <Menu.Item icon={orders[item].icon} key={item} title={orders[item].label} onPress={orders[item].func} />
+        items.map(
+          item =>
+            <Menu.Item key={item} icon={orders[item].icon} title={orders[item].label} onPress={orders[item].func} />
         )
       }
     </Menu>

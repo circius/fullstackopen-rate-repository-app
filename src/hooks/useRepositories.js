@@ -3,10 +3,14 @@ import { useQuery } from '@apollo/client';
 
 import { ALL_REPOSITORIES } from '../graphql/queries';
 
-const useRepositories = () => {
+const useRepositories = (variables) => {
   const [repositories, setRepositories] = useState();
 
-  const { loading, error, data, refetch } = useQuery(ALL_REPOSITORIES, { fetchPolicy: 'cache-and-network' });
+  const { loading, error, data, refetch } = useQuery(
+    ALL_REPOSITORIES, {
+    fetchPolicy: 'cache-and-network',
+    variables: variables
+  });
 
   useEffect(() => {
     if (data) {

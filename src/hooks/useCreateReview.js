@@ -16,7 +16,6 @@ const useCreateReview = () => {
         text: review
       }
     });
-    console.log('reponse:', response);
 
     history.push('/');
   };
