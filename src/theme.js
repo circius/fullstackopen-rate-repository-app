@@ -47,7 +47,6 @@ export const PaperTheme = {
   colors: {
     ...DefaultTheme.colors,
     primary: theme.colors.primary,
-    text: 'black',
   }
 };
 
