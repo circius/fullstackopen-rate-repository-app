@@ -1,9 +1,9 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, LogBox } from 'react-native';
 import ItemSeparator from './ItemSeparator';
 import RepositoryListItem from './RepositoryListItem';
 
-const RepositoryListContainer = ({ repositories }) => {
+const RepositoryListContainer = ({ repositories, onEndReach, ListHeaderComponent }) => {
 
 
   const { edges } = repositories;
@@ -18,6 +18,9 @@ const RepositoryListContainer = ({ repositories }) => {
     renderItem={({ item }) => (
       <RepositoryListItem item={item} />
     )}
+    onEndReached={onEndReach}
+    onEndReachedThreshold={1}
+    ListHeaderComponent={ListHeaderComponent}
   // other props
   />;
 };
