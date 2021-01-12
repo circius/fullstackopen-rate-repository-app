@@ -8,8 +8,9 @@ import useRepositories from '../../hooks/useRepositories';
 
 const RepositoryList = () => {
   const [order, setOrder] = useState("latest");
+  const [filterStr, setFilterStr] = useState("zeit");
 
-  const queryVariables = () => {
+  const sortQueryVariables = () => {
     switch (order) {
       case "latest":
         return {
@@ -28,11 +29,16 @@ const RepositoryList = () => {
     }
   };
 
-  const { repositories, refetch } = useRepositories(queryVariables());
+  const getQueryVariables = () => {
+    const sortVars = sortQueryVariables();
+    return filterStr ? { ...sortVars, searchKeyword: filterStr } : sortVars;
+  };
+
+  const { repositories, refetch } = useRepositories(getQueryVariables());
 
   useEffect(() => {
-    refetch(queryVariables);
-  }, [order]);
+    refetch(getQueryVariables());
+  }, [order, filterStr]);
 
   return (
     <View>
