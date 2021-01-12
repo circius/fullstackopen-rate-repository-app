@@ -8,10 +8,15 @@ export const ALL_REPOSITORIES = gql`
     $orderBy: AllRepositoriesOrderBy,
     $searchKeyword: String,
     ) { 
+
     repositories (
       orderDirection: $orderDirection,
       orderBy: $orderBy
       searchKeyword: $searchKeyword) {
+        pageInfo {
+          hasNextPage,
+          endCursor
+        }
       edges {
         node {
           ...RepositoryDetails
