@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
+import { useDebounce } from 'use-debounce';
 
 import RepositoryListContainer from './RepositoryListContainer';
 import RepositoryListSubMenu from './RepositoryListSubmenu';
@@ -9,6 +10,7 @@ import useRepositories from '../../hooks/useRepositories';
 const RepositoryList = () => {
   const [order, setOrder] = useState("latest");
   const [filterStr, setFilterStr] = useState("");
+  const [filterStrDebounce] = useDebounce(filterStr, 500);
 
   const sortQueryVariables = () => {
     switch (order) {
@@ -31,14 +33,14 @@ const RepositoryList = () => {
 
   const getQueryVariables = () => {
     const sortVars = sortQueryVariables();
-    return filterStr ? { ...sortVars, searchKeyword: filterStr } : sortVars;
+    return filterStrDebounce ? { ...sortVars, searchKeyword: filterStrDebounce } : sortVars;
   };
 
   const { repositories, refetch } = useRepositories(getQueryVariables());
 
   useEffect(() => {
     refetch(getQueryVariables());
-  }, [order, filterStr]);
+  }, [order, filterStrDebounce]);
 
   return (
     <View>
