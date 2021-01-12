@@ -5,10 +5,13 @@ import RepositorySortingSelector from './RepositorySortingSelector';
 import RepositorySearchBar from './RepositorySearchBar';
 
 
-const RepositoryListSubmenu = ({ order, setOrder }) => {
+const RepositoryListSubmenu = ({ order, setOrder, filterStr, setFilterStr }) => {
   return (
     <View style={styles.subMenuContainer}>
-      <RepositorySearchBar />
+      <RepositorySearchBar
+        filterStr={filterStr}
+        setFilterStr={setFilterStr}
+      />
       <RepositorySortingSelector
         order={order}
         setOrder={setOrder}

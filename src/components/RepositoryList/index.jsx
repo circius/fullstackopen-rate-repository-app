@@ -8,7 +8,7 @@ import useRepositories from '../../hooks/useRepositories';
 
 const RepositoryList = () => {
   const [order, setOrder] = useState("latest");
-  const [filterStr, setFilterStr] = useState("zeit");
+  const [filterStr, setFilterStr] = useState("");
 
   const sortQueryVariables = () => {
     switch (order) {
@@ -42,7 +42,7 @@ const RepositoryList = () => {
 
   return (
     <View>
-      <RepositoryListSubMenu setOrder={setOrder} order={order} />
+      <RepositoryListSubMenu setOrder={setOrder} order={order} filterStr={filterStr} setFilterStr={setFilterStr} />
       {repositories
         ? <RepositoryListContainer repositories={repositories} />
         : <Text>loading...</Text>}

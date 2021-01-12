@@ -2,11 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
-const RepositorySearchBar = () => {
+const RepositorySearchBar = ({ filterStr, setFilterStr }) => {
   return (
     <View style={styles.container}>
       <Searchbar
         placeholder="Filter"
+        onChangeText={textContent => setFilterStr(textContent)}
+        value={filterStr}
       />
     </View>
 
