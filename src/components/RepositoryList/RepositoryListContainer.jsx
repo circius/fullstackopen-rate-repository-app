@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, LogBox } from 'react-native';
+import { FlatList } from 'react-native';
 import ItemSeparator from './ItemSeparator';
 import RepositoryListItem from './RepositoryListItem';
 
