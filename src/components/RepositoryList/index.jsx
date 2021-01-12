@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 
 import RepositoryListContainer from './RepositoryListContainer';
-import RepositorySortingSelector from '../RepositorySortingSelector';
+import RepositoryListSubMenu from './RepositoryListSubmenu';
 
 import useRepositories from '../../hooks/useRepositories';
 
@@ -36,15 +36,12 @@ const RepositoryList = () => {
 
   return (
     <View>
-      <RepositorySortingSelector order={order} setOrder={setOrder} />
+      <RepositoryListSubMenu setOrder={setOrder} order={order} />
       {repositories
         ? <RepositoryListContainer repositories={repositories} />
         : <Text>loading...</Text>}
     </View>
   );
 };
-
-
-
 
 export default RepositoryList;
