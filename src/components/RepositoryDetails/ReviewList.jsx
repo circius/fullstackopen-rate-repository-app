@@ -6,7 +6,12 @@ import ItemSeparator from '../RepositoryList/ItemSeparator';
 import ReviewItem from './ReviewItem';
 
 const ReviewList = ({ id }) => {
-  const { reviews } = useReviews({ id });
+  const INITIAL_FETCH = 2;
+  const initialQueryVariables = {
+    id,
+    first: INITIAL_FETCH,
+  };
+  const { reviews } = useReviews(initialQueryVariables);
 
   if (!reviews) return <Text>loading...</Text>;
 
