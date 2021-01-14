@@ -47,9 +47,7 @@ const RepositoryList = () => {
   const { repositories, refetch, fetchMore } = useRepositories(getQueryVariables());
 
   const onEndReach = () => {
-    console.log('fetchMore');
-
-    // fetchMore();
+    fetchMore();
   };
 
   useEffect(() => {
