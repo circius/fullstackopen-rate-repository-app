@@ -12,7 +12,7 @@ const RepositoryList = () => {
   const [filterStr, setFilterStr] = useState("");
   const [filterStrDebounce] = useDebounce(filterStr, 500);
 
-  const sortQueryVariables = (argsObject) => {
+  const getSortQueryVariables = (argsObject) => {
     switch (order) {
       case "latest":
         return {
@@ -36,9 +36,9 @@ const RepositoryList = () => {
 
   const getQueryVariables = () => {
     const baseQueryVariables = {
-      first: 4
+      first: 2
     };
-    const sortVars = sortQueryVariables(baseQueryVariables);
+    const sortVars = getSortQueryVariables(baseQueryVariables);
     return filterStrDebounce ? { ...sortVars, searchKeyword: filterStrDebounce } : sortVars;
   };
 
@@ -47,10 +47,9 @@ const RepositoryList = () => {
   const { repositories, refetch, fetchMore } = useRepositories(getQueryVariables());
 
   const onEndReach = () => {
-    console.log('endreach');
-    console.log(fetchMore);
+    console.log('fetchMore');
 
-    fetchMore();
+    // fetchMore();
   };
 
   useEffect(() => {
