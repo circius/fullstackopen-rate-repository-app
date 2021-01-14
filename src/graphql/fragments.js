@@ -18,7 +18,7 @@ export const RepositoryReviews = gql`
   fragment RepositoryReviews on Repository {
     id,
     fullName,
-    reviews {
+    reviews (first: $first, after: $after) {
       edges {
         node {
           id

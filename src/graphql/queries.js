@@ -44,7 +44,7 @@ ${RepositoryDetails}
 `;
 
 export const REPOSITORY_REVIEWS = gql`
-query ($id: ID!) {
+query ($id: ID!, $first: Int, $after: String) {
   repository(id: $id) {
     ...RepositoryReviews
   }
