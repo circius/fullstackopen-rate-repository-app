@@ -6,12 +6,44 @@ import { REPOSITORY_REVIEWS } from '../graphql/queries';
 const useReviews = (variables) => {
   const [reviews, setReviews] = useState();
 
-  const { loading, error, data, refetch } = useQuery(
+  const { loading, fetchMore, data, refetch } = useQuery(
     REPOSITORY_REVIEWS,
     {
       fetchPolicy: 'cache-and-network',
       variables: variables
     });
+
+  const handleFetchMore = () => {
+    const canFetchMore =
+      !loading && data && data.repository.reviews.pageInfo.hasNextPage;
+
+    if (!canFetchMore) {
+      console.log('couldnt get more reviews');
+      console.log('data.repository.reviews:', data.repository.reviews);
+      return;
+    }
+    fetchMore({
+      query: REPOSITORY_REVIEWS,
+      variables: {
+        after: data.repository.reviews.pageInfo.endCursor,
+        ...variables
+      },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        const nextResult = {
+          repository: {
+            ...fetchMoreResult.repository,
+            reviews: {
+              ...previousResult.repository.reviews.edges,
+              ...fetchMoreResult.repository.reviews.edges
+
+            }
+          }
+        };
+        return nextResult;
+      }
+    }
+    );
+  };
 
   useEffect(() => {
     if (!loading) {
@@ -19,7 +51,7 @@ const useReviews = (variables) => {
     }
   }, [loading]);
 
-  return { reviews, loading, refetch };
+  return { reviews, loading, refetch, fetchMore: handleFetchMore };
 };
 
 export default useReviews;

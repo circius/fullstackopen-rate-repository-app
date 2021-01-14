@@ -8,7 +8,7 @@ const useRepositories = (variables) => {
 
   const { loading, fetchMore, data, refetch } = useQuery(
     ALL_REPOSITORIES, {
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'cache-and-network',
     variables: variables
   });
 
