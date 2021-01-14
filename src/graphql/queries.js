@@ -7,12 +7,15 @@ export const ALL_REPOSITORIES = gql`
     $orderDirection: OrderDirection,
     $orderBy: AllRepositoriesOrderBy,
     $searchKeyword: String,
+    $first: Int,
     ) { 
 
     repositories (
       orderDirection: $orderDirection,
       orderBy: $orderBy
-      searchKeyword: $searchKeyword) {
+      searchKeyword: $searchKeyword
+      first: $first)
+        {
         pageInfo {
           hasNextPage,
           endCursor
