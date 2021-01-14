@@ -6,7 +6,7 @@ import ItemSeparator from '../RepositoryList/ItemSeparator';
 import ReviewItem from './ReviewItem';
 
 const ReviewList = ({ id }) => {
-  const { reviews } = useReviews(id);
+  const { reviews } = useReviews({ id });
 
   if (!reviews) return <Text>loading...</Text>;
 

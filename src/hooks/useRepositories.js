@@ -17,12 +17,8 @@ const useRepositories = (variables) => {
       !loading && data && data.repositories.pageInfo.hasNextPage;
 
     if (!canFetchMore) {
-      console.log('cant fetch more');
-      console.log('loading:', loading);
-      console.log('data.repositories.pageInfo.hasNextPage:', data.repositories.pageInfo.hasNextPage);
       return;
     }
-
 
     fetchMore({
       query: ALL_REPOSITORIES,
