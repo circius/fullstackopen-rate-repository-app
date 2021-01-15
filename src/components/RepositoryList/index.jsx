@@ -55,7 +55,7 @@ const RepositoryList = () => {
   }, [order, filterStrDebounce]);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
 
       {repositories
         ? <RepositoryListContainer
