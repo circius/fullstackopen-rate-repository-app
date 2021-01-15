@@ -9,7 +9,7 @@ const useReviews = (variables) => {
   const { loading, fetchMore, data, refetch } = useQuery(
     REPOSITORY_REVIEWS,
     {
-      fetchPolicy: 'cache-and-network',
+      fetchPolicy: 'network-only',
       variables: variables
     });
 
@@ -18,10 +18,9 @@ const useReviews = (variables) => {
       !loading && data && data.repository.reviews.pageInfo.hasNextPage;
 
     if (!canFetchMore) {
-      console.log('couldnt get more reviews');
-      console.log('data.repository.reviews:', data.repository.reviews);
       return;
     }
+
     fetchMore({
       query: REPOSITORY_REVIEWS,
       variables: {
@@ -33,9 +32,11 @@ const useReviews = (variables) => {
           repository: {
             ...fetchMoreResult.repository,
             reviews: {
-              ...previousResult.repository.reviews.edges,
-              ...fetchMoreResult.repository.reviews.edges
-
+              ...fetchMoreResult.repository.reviews,
+              edges: [
+                ...previousResult.repository.reviews.edges,
+                ...fetchMoreResult.repository.reviews.edges
+              ],
             }
           }
         };
@@ -53,5 +54,6 @@ const useReviews = (variables) => {
 
   return { reviews, loading, refetch, fetchMore: handleFetchMore };
 };
+
 
 export default useReviews;
