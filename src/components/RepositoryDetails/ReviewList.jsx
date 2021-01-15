@@ -1,32 +1,28 @@
 import React from 'react';
-import { Text, FlatList } from 'react-native';
+import { Text } from 'react-native';
 
 import useReviews from '../../hooks/useReviews';
-import ItemSeparator from '../RepositoryList/ItemSeparator';
-import ReviewItem from './ReviewItem';
+import ReviewListContainer from './ReviewListContainer';
+
 
 const ReviewList = ({ id }) => {
-  const INITIAL_FETCH = 2;
+  const INITIAL_FETCH = 4;
   const initialQueryVariables = {
     id,
     first: INITIAL_FETCH,
   };
-  const { reviews } = useReviews(initialQueryVariables);
+  const { reviews, fetchMore } = useReviews(initialQueryVariables);
+
+  const onEndReach = () => {
+    fetchMore();
+  };
 
   if (!reviews) return <Text>loading...</Text>;
 
-  const { edges } = reviews;
-
-  const nodes = edges
-    ? edges.map(edge => edge.node)
-    : [];
-
   return (
-    <FlatList
-      data={nodes}
-      ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem item={item} />}
-    />
+    <ReviewListContainer
+      reviews={reviews}
+      onEndReach={onEndReach} />
   );
 };
 
