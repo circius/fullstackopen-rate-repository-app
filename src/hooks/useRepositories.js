@@ -36,6 +36,7 @@ const useRepositories = (variables) => {
             ]
           }
         };
+
         return nextResult;
       }
 

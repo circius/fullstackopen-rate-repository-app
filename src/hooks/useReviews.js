@@ -9,7 +9,7 @@ const useReviews = (variables) => {
   const { loading, fetchMore, data, refetch } = useQuery(
     REPOSITORY_REVIEWS,
     {
-      fetchPolicy: 'network-only',
+      fetchPolicy: 'cache-and-network',
       variables: variables
     });
 

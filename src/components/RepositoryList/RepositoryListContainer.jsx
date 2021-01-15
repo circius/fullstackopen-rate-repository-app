@@ -5,7 +5,6 @@ import RepositoryListItem from './RepositoryListItem';
 
 const RepositoryListContainer = ({ repositories, onEndReach, ListHeaderComponent }) => {
 
-
   const { edges } = repositories;
 
   const nodes = edges
@@ -19,7 +18,7 @@ const RepositoryListContainer = ({ repositories, onEndReach, ListHeaderComponent
       <RepositoryListItem item={item} />
     )}
     onEndReached={onEndReach}
-    onEndReachedThreshold={1}
+    onEndReachedThreshold={.5}
     ListHeaderComponent={ListHeaderComponent}
   // other props
   />;

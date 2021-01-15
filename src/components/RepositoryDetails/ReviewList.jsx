@@ -13,6 +13,9 @@ const ReviewList = ({ id }) => {
   };
   const { reviews, fetchMore } = useReviews(initialQueryVariables);
 
+  reviews && console.log('reviews:', reviews);
+
+
   const onEndReach = () => {
     fetchMore();
   };

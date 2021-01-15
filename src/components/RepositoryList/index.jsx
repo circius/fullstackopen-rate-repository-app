@@ -42,8 +42,6 @@ const RepositoryList = () => {
     return filterStrDebounce ? { ...sortVars, searchKeyword: filterStrDebounce } : sortVars;
   };
 
-
-
   const { repositories, refetch, fetchMore } = useRepositories(getQueryVariables());
 
   const onEndReach = () => {
