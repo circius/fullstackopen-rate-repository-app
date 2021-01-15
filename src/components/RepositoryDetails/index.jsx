@@ -13,9 +13,10 @@ const RepositoryDetails = () => {
   if (!repository) return <Text>loading...</Text>;
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <RepositoryItem item={repository} />
       <ReviewList id={repository.id} />
+      <Text> whatever </Text>
     </View>
   );
 };
