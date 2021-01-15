@@ -19,6 +19,10 @@ export const RepositoryReviews = gql`
     id,
     fullName,
     reviews (first: $first, after: $after) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       edges {
         node {
           id
