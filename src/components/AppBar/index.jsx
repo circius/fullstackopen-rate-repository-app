@@ -6,6 +6,7 @@ import useAuthorizedUser from '../../hooks/useAuthorizedUser';
 import AppBarTab from './AppBarTab';
 import LoginBarTab from './LoginBarTab';
 import CreateReviewTab from './CreateReviewTab';
+import MyReviewsTab from './MyReviewsTab';
 import SignUpTab from './SignUpTab';
 
 import theme from '../../theme';
@@ -21,6 +22,7 @@ const AppBar = ({ linkPairs }) => {
       )}
       {!authorizedUser && <SignUpTab />}
       {authorizedUser && <CreateReviewTab />}
+      {authorizedUser && <MyReviewsTab />}
       <LoginBarTab authorizedUser={authorizedUser} />
     </ScrollView>
   </View>;
