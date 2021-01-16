@@ -26,7 +26,7 @@ const ReviewDetails = ({ item }) => {
 
   return (
     <View style={styles.container}>
-      {item.user && <Text style={styles.username}>{item.user.username}</Text>}
+      <Text style={styles.username}>{item.user ? item.user.username : item.repository.fullName}</Text>
       <Text style={styles.createdAt}>{fdate}</Text>
       <Text style={styles.text}>{item.text}</Text>
     </View>

@@ -63,6 +63,9 @@ query getAuthorizedUser ($includeReviews: Boolean = false){
             text
             rating
             createdAt
+            repository {
+              fullName
+            }
           }
         }
       }
