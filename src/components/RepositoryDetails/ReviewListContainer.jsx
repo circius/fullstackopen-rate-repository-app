@@ -13,9 +13,6 @@ const ReviewListContainer = ({ reviews, onEndReach }) => {
     ? edges.map(edge => edge.node)
     : [];
 
-  console.log('nodes of reviewlist:', nodes);
-
-
   return <FlatList
     data={nodes}
     ItemSeparatorComponent={ItemSeparator}

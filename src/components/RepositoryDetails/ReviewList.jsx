@@ -11,10 +11,7 @@ const ReviewList = ({ id }) => {
     id,
     first: INITIAL_FETCH,
   };
-  const { reviews, fetchMore } = useReviews(initialQueryVariables);
-
-  reviews && console.log('reviews:', reviews);
-
+  const { reviews, fetchMore, refetch } = useReviews(initialQueryVariables);
 
   const onEndReach = () => {
     fetchMore();
