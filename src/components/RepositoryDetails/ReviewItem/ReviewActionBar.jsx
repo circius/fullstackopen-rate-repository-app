@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -24,6 +24,26 @@ const ReviewActionBar = ({ repoId, reviewId, refetchReviews }) => {
     history.push(`/${repoId}`);
   };
 
+  const deleteConfirm = async () => {
+    Alert.alert(
+      "Delete review?",
+      "Do you want to delete the review?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+
+        },
+        {
+          text: "Delete",
+          onPress: () => deleteReview(),
+          style: "destructive"
+        }
+
+      ]
+    );
+  };
+
   const deleteReview = async () => {
     const result = await mutate({ variables: { id: reviewId } });
     refetchReviews();
@@ -32,7 +52,7 @@ const ReviewActionBar = ({ repoId, reviewId, refetchReviews }) => {
   return (
     <View style={styles.container}>
       <Button color={theme.colors.primary} label="view repo" onPress={() => gotoRepo()} />
-      <Button color={theme.colors.reject} label="delete review" onPress={() => deleteReview()} />
+      <Button color={theme.colors.reject} label="delete review" onPress={() => deleteConfirm()} />
     </View>
   );
 };
