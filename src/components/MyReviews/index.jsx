@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import useAuthorizedUser from '../../hooks/useAuthorizedUser';
 import ItemSeparator from '../RepositoryList/ItemSeparator';
 import ReviewItem from '../RepositoryDetails/ReviewItem';
+
 
 const MyReviews = () => {
   const user = useAuthorizedUser({ includeReviews: true });
@@ -22,7 +23,10 @@ const MyReviews = () => {
     <FlatList
       data={nodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem item={item} />}
+      renderItem={({ item }) => (
+        <View>
+          <ReviewItem item={item} authorized={true} />
+        </View>)}
     />
   );
 };
