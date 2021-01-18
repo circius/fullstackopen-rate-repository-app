@@ -6,7 +6,7 @@ import AverageRating from './AverageRating';
 import ReviewDetails from './ReviewDetails';
 import ReviewActionBar from './ReviewActionBar';
 
-const ReviewItem = ({ item, authorized }) => {
+const ReviewItem = ({ item, authorized, refetchReviews }) => {
   const windowWidth = useWindowDimensions().width;
   const styles = StyleSheet.create({
     container: {
@@ -25,7 +25,7 @@ const ReviewItem = ({ item, authorized }) => {
         <AverageRating rating={item.rating} />
         <ReviewDetails item={item} />
       </View>
-      { authorized && <ReviewActionBar repoId={item.repository.id} />}
+      { authorized && <ReviewActionBar reviewId={item.id} repoId={item.repository.id} refetchReviews={refetchReviews} />}
     </View>);
 };
 

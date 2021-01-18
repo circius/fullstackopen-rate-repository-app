@@ -6,17 +6,15 @@ import ReviewItem from '../RepositoryDetails/ReviewItem';
 
 
 const MyReviews = () => {
-  const user = useAuthorizedUser({ includeReviews: true });
+  const { authorizedUser, refetch } = useAuthorizedUser({ includeReviews: true });
 
-  if (!user) { return <Text>loading...</Text>; }
+  if (!authorizedUser) { return <Text>loading...</Text>; }
 
-  const { edges } = user.reviews;
+  const { edges } = authorizedUser.reviews;
 
   const nodes = edges
     ? edges.map(edge => edge.node)
     : [];
-
-  console.log('nodes:', nodes);
 
 
   return (
@@ -25,7 +23,7 @@ const MyReviews = () => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => (
         <View>
-          <ReviewItem item={item} authorized={true} />
+          <ReviewItem item={item} authorized={true} refetchReviews={refetch} />
         </View>)}
     />
   );

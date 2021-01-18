@@ -13,7 +13,7 @@ import theme from '../../theme';
 
 
 const AppBar = ({ linkPairs }) => {
-  const authorizedUser = useAuthorizedUser();
+  const { authorizedUser } = useAuthorizedUser();
 
   return <View style={styles.container}>
     <ScrollView horizontal>

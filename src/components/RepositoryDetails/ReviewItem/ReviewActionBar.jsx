@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useHistory } from 'react-router-dom';
+import { useMutation } from '@apollo/react-hooks';
 
 import Button from '../../Button';
 import theme from '../../../theme';
+import { DELETE_REVIEW } from '../../../graphql/mutations';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -14,15 +17,22 @@ const styles = StyleSheet.create({
   }
 });
 
-const ReviewActionBar = ({ repoId }) => {
+const ReviewActionBar = ({ repoId, reviewId, refetchReviews }) => {
   const history = useHistory();
+  const [mutate] = useMutation(DELETE_REVIEW);
   const gotoRepo = () => {
     history.push(`/${repoId}`);
   };
+
+  const deleteReview = async () => {
+    const result = await mutate({ variables: { id: reviewId } });
+    refetchReviews();
+  };
+
   return (
     <View style={styles.container}>
       <Button color={theme.colors.primary} label="view repo" onPress={() => gotoRepo()} />
-      <Button color={theme.colors.reject} label="delete review" />
+      <Button color={theme.colors.reject} label="delete review" onPress={() => deleteReview()} />
     </View>
   );
 };
