@@ -65,6 +65,7 @@ query getAuthorizedUser ($includeReviews: Boolean = false){
             createdAt
             repository {
               fullName
+              id
             }
           }
         }
